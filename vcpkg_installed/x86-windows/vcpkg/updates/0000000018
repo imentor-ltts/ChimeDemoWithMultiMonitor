@@ -1,0 +1,9 @@
+Package: cpr
+Version: 1.10.2+3
+Depends: curl, vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x86-windows
+Multi-Arch: same
+Abi: 667c2eb582ad3f1e82821bb4ebff68dc6de3bb1ec1a79d26551ee3d5d798c2ab
+Description: C++ Requests is a simple wrapper around libcurl inspired by the excellent Python Requests project.
+Default-Features: ssl
+Status: install ok installed

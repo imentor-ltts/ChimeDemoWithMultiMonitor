@@ -1,0 +1,17 @@
+﻿@page "/sharemeeting/{Id:int}"
+<h3>JoinMeeting</h3>
+<p>
+    Please click this link to Join the meeting:
+    <a href="@UrlLink">Click Here</a>
+    @UrlLink
+</p>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private string UrlLink = "";
+    protected override void OnInitialized()
+    {
+        UrlLink = "joinmeeting/" + Id;
+    }
+}

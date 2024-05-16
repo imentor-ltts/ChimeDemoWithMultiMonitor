@@ -1,0 +1,17 @@
+#pragma once
+// CM means CustomMessage
+#define CM_PASTE 2001
+#define CM_RUN 2002
+#define CM_NEWWIN 2003
+#define CM_SPKEYS1 2004
+#define CM_ALTDOWN 2005
+#define CM_ALTUP 2006
+#define CM_SHOWMENUS 2007
+#define CM_CLOSESESSION 2008
+#define CM_LBUTTONDOWN 2009
+#define CM_LBUTTONUP 2010
+#define CM_RBUTTONDOWN 2011
+#define CM_RBUTTONUP 2012
+#define CM_MOUSEMOVE 2013
+#define CM_KEYDOWN 2014
+#define CM_KEYUP 2015

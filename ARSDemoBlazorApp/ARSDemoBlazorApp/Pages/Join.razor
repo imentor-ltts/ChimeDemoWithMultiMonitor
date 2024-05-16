@@ -1,0 +1,84 @@
+﻿@page "/joinmeeting/{Id:int}"
+@inject IJSRuntime jsCode
+
+
+<PageTitle>Join Meeting</PageTitle>
+<h3>Join Meeting</h3>
+@* <span id="joinlink"></span>  *@
+
+<style>
+    .image-container {
+        min-width: 50%;
+        min-height: 300px;
+        max-width: 100%; /* Ensures that the image won't exceed the container's width */
+        max-height: 100%; /* Ensures that the image won't exceed the container's height */
+        overflow: hidden; /* Ensures that any overflow is hidden */
+        border : 2px solid lightBlue
+    }
+
+        .image{
+            width: 100%; /* Makes sure the image takes up the full width of the container */
+            height: auto; /* Allows the height to adjust automatically based on the image's aspect ratio */
+            display: block; /* Makes the image a block element */
+        }
+</style>
+
+<div class="menu">
+    <div>
+        Chime Demo<br>
+        <p>You will be joining this Meeting: @Id</p>
+        Enter your name to join : <input @bind="joinee" style="width:300px" /><br>
+        <input id="externalMeetingId" value="899901" style="width:300px;display:none" />
+        <input id="meetingId" value="" style="width:300px;display:none" />
+        <input id="attendeeId" value="" style="width:300px;display:none" />
+        <br>
+    </div>
+</div><!-- end of menu -->
+<div>
+    <br />
+    <div>
+        <button @onclick="joinMeeting">Join the meeting</button>
+    </div>
+    <div id="content-section">
+        <h4 id="joinedby" style="display:none">Joined by:</h4>
+        <p>Meeting joined by: @joinee</p>
+        <div>
+            List of Attendees: <select id="slAttendees"></select>
+        </div>
+        <section>
+            <div>
+                <div style="display:inline-block; width:100%">
+                    <h3>Remote Access:</h3>
+                    <div id="video-tile-screen-share" onclick="handleMouseClick(event)" onkeydown="handleKeyPress" onmousemove="handleMouseMovement(event)" tabindex="0" class="image-container">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+</div>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private string joinee = string.Empty;
+
+    private string textMessage = string.Empty;
+
+    private void joinMeeting()
+    {
+        jsCode.InvokeVoidAsync("onJoinMeetingInfo", Id, joinee);
+    }
+    private async void sendMessage()
+    {
+        //jsCode.InvokeVoidAsync("onSendTextMessage", textMessage);
+        var result = await jsCode.InvokeAsync<string>("onSendTextMessage", textMessage); 
+    }
+}
+
+
+
+
+

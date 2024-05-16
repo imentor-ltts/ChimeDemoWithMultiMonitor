@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-SampleWinService-8ed4b876-145b-448a-841b-16a89928018d</UserSecretsId>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="publish\**" />
+    <Compile Remove="runtimes\**" />
+    <Content Remove="publish\**" />
+    <Content Remove="runtimes\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <EmbeddedResource Remove="runtimes\**" />
+    <None Remove="publish\**" />
+    <None Remove="runtimes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="OldCode_WithCommentedLines.cs" />
+    <Compile Remove="Worker.cs" />
+    <Compile Remove="WorkerOld.cs" />
+    <Compile Remove="Worker_new.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ChimeAppLauncherWinService.zip" />
+    <None Remove="DELETE" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChimeAppLauncherDll\ChimeAppLauncherDll.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,45 @@
+﻿@page "/"
+@using ArsChimeBlazorApp.Models;
+@inject NavigationManager navigationManager
+
+<div class="form-container">
+    @if (errorMessage != null)
+    {
+        <p style="color: red;">@errorMessage</p>
+    }
+    <EditForm Model="@user" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <InputText id="username" style="width: 300px;" @bind-Value="@user.Username" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <InputText type="password" style="width: 300px;" id="password" @bind-Value="@user.Password" class="form-control" />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Login</button>
+    </EditForm>
+</div>
+
+@code {
+    private User user = new User();
+    private string errorMessage = string.Empty;
+
+    private void HandleValidSubmit()
+    {
+        // Handle form submission
+
+        if (user.Username == "meduser" && user.Password == "@med@User1")
+        {
+            navigationManager.NavigateTo($"/createMeeting");
+        }
+        else
+        {
+            errorMessage = "Username and Password is not correct";
+        }
+
+    }
+}
